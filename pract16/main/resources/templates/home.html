@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+</head>
+<body>
+<h1>Добро пожаловать, <span th:text="${username}">Пользователь</span></h1>
+
+<div th:if="${successMessage}">
+    <p th:text="${successMessage}"></p>
+</div>
+
+<div th:if="${successMessage == null}">
+    <h2>Форма обратной связи</h2>
+    <form action="#" th:action="@{/feedback}" th:object="${feedback}" method="post">
+        <label for="message">Ваше сообщение:</label><br>
+        <textarea id="message" th:field="*{message}" rows="4" cols="50"></textarea><br><br>
+
+        <button type="submit">Отправить</button>
+    </form>
+</div>
+</body>
+</html>
